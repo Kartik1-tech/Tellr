@@ -1,0 +1,230 @@
+:root {
+  --bg: #0a0a0a;
+  --panel: #1a1a1a;
+  --text: #e0e0e0;
+  --accent: #3a86ff;
+  --danger: #ff4d4d;
+  --border: #333;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  overflow: hidden;
+  user-select: none;
+}
+
+#app {
+  padding: 20px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+h1 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+#status-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--panel);
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+}
+
+#status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #666;
+}
+
+.recording #status-dot {
+  background-color: var(--danger);
+  box-shadow: 0 0 8px var(--danger);
+  animation: pulse 1.5s infinite;
+}
+
+.transcribing #status-dot {
+  background-color: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+main {
+  flex: 1;
+}
+
+.control-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 8px;
+  letter-spacing: 0.5px;
+}
+
+select, input {
+  width: 100%;
+  background: var(--panel);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+select:focus, input:focus {
+  border-color: var(--accent);
+}
+
+.toggle-group {
+  display: flex;
+  background: var(--panel);
+  border-radius: 8px;
+  padding: 4px;
+  border: 1px solid var(--border);
+}
+
+.toggle-group button {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: #888;
+  padding: 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: all 0.2s;
+}
+
+.toggle-group button.active {
+  background: #333;
+  color: var(--text);
+}
+
+#hotkey-display {
+  display: inline-block;
+  background: #333;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-family: monospace;
+  font-size: 0.85rem;
+  margin-right: 8px;
+}
+
+button {
+  cursor: pointer;
+}
+
+button.small {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: #888;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+}
+
+button.small:hover {
+  border-color: #555;
+  color: var(--text);
+}
+
+button.secondary {
+  width: 100%;
+  background: #333;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 8px;
+  border-radius: 6px;
+  margin-top: 8px;
+}
+
+#save-btn {
+  width: 100%;
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: transform 0.1s;
+}
+
+#save-btn:active {
+  transform: scale(0.98);
+}
+
+.hidden {
+  display: none;
+}
+
+#download-progress {
+    font-size: 0.75rem;
+    color: var(--accent);
+    margin-top: 4px;
+    text-align: center;
+}
+
+#transcription-panel {
+    margin-bottom: 20px;
+}
+
+#transcription-panel textarea {
+    width: 100%;
+    height: 100px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 10px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    resize: vertical;
+    outline: none;
+    font-family: inherit;
+}
+
+#transcription-panel textarea:focus {
+    border-color: var(--accent);
+}
+
+#transcription-panel .control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+#transcription-panel button.small {
+    align-self: flex-end;
+}

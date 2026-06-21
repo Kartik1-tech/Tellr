@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tellr</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <h1>Tellr</h1>
+        <div id="status-container">
+          <div id="status-dot"></div>
+          <span id="status-text">Idle</span>
+        </div>
+      </header>
+
+      <main>
+        <div class="control-group">
+          <label for="mic-select">Microphone</label>
+          <select id="mic-select">
+            <option value="default">Default System Mic</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label for="engine-select">Engine</label>
+          <div class="toggle-group">
+            <button id="engine-groq" class="active">Groq (Cloud)</button>
+            <button id="engine-local">Whisper (Local)</button>
+          </div>
+        </div>
+
+        <div id="local-model-section" class="hidden">
+            <div class="control-group">
+                <label for="model-select">Model Size</label>
+                <select id="model-select">
+                    <option value="tiny">Tiny (~75MB)</option>
+                    <option value="base">Base (~150MB)</option>
+                    <option value="small">Small (~500MB)</option>
+                </select>
+            </div>
+            <button id="download-model-btn" class="secondary">Download Model</button>
+            <div id="download-progress" class="hidden">Downloading...</div>
+        </div>
+
+        <div class="control-group">
+          <label>Hotkey</label>
+          <div id="hotkey-display">Ctrl+Shift+Space</div>
+          <button id="change-hotkey-btn" class="small">Change</button>
+        </div>
+      </main>
+
+      <section id="transcription-panel">
+        <div class="control-group">
+          <label for="transcription-text">Transcription</label>
+          <textarea id="transcription-text" readonly placeholder="Transcribed text will appear here..."></textarea>
+          <button id="clear-text-btn" class="small">Clear</button>
+        </div>
+      </section>
+
+      <section id="settings-panel">
+        <div class="control-group">
+          <label for="api-key">Groq API Key</label>
+          <input type="password" id="api-key" placeholder="gsk_..." />
+        </div>
+        <div class="control-group">
+          <label for="language">Language</label>
+          <select id="language">
+            <option value="">Auto-detect</option>
+            <option value="en">English</option>
+            <option value="hi">हिन्दी (Hindi)</option>
+            <option value="bn">বাংলা (Bengali)</option>
+            <option value="ta">தமிழ் (Tamil)</option>
+            <option value="te">తెలుగు (Telugu)</option>
+            <option value="mr">मराठी (Marathi)</option>
+            <option value="gu">ગુજરાતી (Gujarati)</option>
+            <option value="kn">ಕನ್ನಡ (Kannada)</option>
+            <option value="ml">മലയാളം (Malayalam)</option>
+            <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+            <option value="ur">اردو (Urdu)</option>
+            <option value="or">ଓଡ଼ିଆ (Odia)</option>
+            <option value="as">অসমীয়া (Assamese)</option>
+            <option value="es">Español (Spanish)</option>
+            <option value="fr">Français (French)</option>
+            <option value="de">Deutsch (German)</option>
+            <option value="it">Italiano (Italian)</option>
+            <option value="pt">Português (Portuguese)</option>
+            <option value="ru">Русский (Russian)</option>
+            <option value="ja">日本語 (Japanese)</option>
+            <option value="ko">한국어 (Korean)</option>
+            <option value="zh">中文 (Chinese)</option>
+            <option value="ar">العربية (Arabic)</option>
+            <option value="nl">Nederlands (Dutch)</option>
+            <option value="tr">Türkçe (Turkish)</option>
+            <option value="pl">Polski (Polish)</option>
+          </select>
+        </div>
+      </section>
+
+      <footer>
+        <button id="save-btn">Save Settings</button>
+      </footer>
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
