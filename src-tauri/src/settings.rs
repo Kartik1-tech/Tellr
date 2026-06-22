@@ -28,7 +28,7 @@ impl Default for Settings {
 }
 
 pub fn get_settings_path() -> PathBuf {
-    let proj_dirs = ProjectDirs::from("com", "tellr", "app").unwrap();
+    let proj_dirs = ProjectDirs::from("com", "speakr", "app").unwrap();
     let config_dir = proj_dirs.config_dir();
     fs::create_dir_all(config_dir).unwrap();
     config_dir.join("settings.json")

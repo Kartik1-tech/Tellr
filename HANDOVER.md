@@ -1,12 +1,12 @@
-# Tellr - Project Handover
+# Speakr - Project Handover
 
 ## Overview
-Tellr is a lightweight desktop dictation app. It uses a global hotkey to record audio, transcribes it via Groq's API, and auto-pastes the result.
+Speakr is a lightweight desktop dictation app. It uses a global hotkey to record audio, transcribes it via Groq's API, and auto-pastes the result.
 
 ## Current Architecture
 
 ### Python Stack (Primary - Working)
-- `tellr_app.py` - Main app: CustomTkinter UI, system tray, global hotkey, clipboard, auto-paste
+- `speakr_app.py` - Main app: CustomTkinter UI, system tray, global hotkey, clipboard, auto-paste
 - `recorder.py` - 16kHz mono audio capture via sounddevice
 - `transcriber.py` - Groq cloud transcription via requests
 - `settings.py` - JSON settings persistence

@@ -1,5 +1,5 @@
 @echo off
-title Tellr Launcher
+title Speakr Launcher
 cd /d "%~dp0"
 
 REM --- Find Python installation (bypass Windows Store stub) ---
@@ -61,21 +61,21 @@ if errorlevel 1 (
 )
 
 REM --- Launch app ---
-echo [3/3] Starting Tellr...
+echo [3/3] Starting Speakr...
 echo.
 echo ============================================================
-echo  Tellr is starting. Keep this window open to see debug logs.
-echo  Close this window OR press Ctrl+C to stop Tellr.
+echo  Speakr is starting. Keep this window open to see debug logs.
+echo  Close this window OR press Ctrl+C to stop Speakr.
 echo  Hotkey: Ctrl + Shift + M
 echo ============================================================
 echo.
 
-.venv\Scripts\python tellr_app.py
+.venv\Scripts\python speakr_app.py
 if errorlevel 1 (
-    echo [ERROR] Tellr exited with error code %errorlevel%.
+    echo [ERROR] Speakr exited with error code %errorlevel%.
     pause
     exit /b 1
 )
 
-echo Tellr has exited.
+echo Speakr has exited.
 pause

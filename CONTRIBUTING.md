@@ -1,6 +1,6 @@
-# Contributing to Tellr
+# Contributing to Speakr
 
-First off, thank you for considering contributing to Tellr. It's people like you who make this tool better for everyone.
+First off, thank you for considering contributing to Speakr. It's people like you who make this tool better for everyone.
 
 This document outlines the guidelines for contributing. Following them helps maintainers and contributors communicate effectively and keeps the project healthy.
 
@@ -41,7 +41,7 @@ You don't have to write code to contribute. Every contribution type is valued eq
 
 | Contribution Type | Description | Ideal For |
 |-------------------|-------------|-----------|
-| 🐛 **Bug Reports** | Report issues you encounter while using Tellr | Everyone |
+| 🐛 **Bug Reports** | Report issues you encounter while using Speakr | Everyone |
 | 💡 **Feature Ideas** | Suggest new capabilities or improvements | Power users |
 | 📝 **Documentation** | Improve README, fix typos, add examples | Writers |
 | 🌐 **Translations** | Add language support for the UI | Multilingual users |
@@ -63,14 +63,14 @@ You don't have to write code to contribute. Every contribution type is valued eq
 
 ```bash
 # 1. Fork the repository
-#    Click "Fork" at https://github.com/kartikpawar/tellr
+#    Click "Fork" at https://github.com/kartikpawar/speakr
 
 # 2. Clone your fork locally
-git clone https://github.com/YOUR-USERNAME/tellr.git
-cd tellr
+git clone https://github.com/YOUR-USERNAME/speakr.git
+cd speakr
 
 # 3. Add the upstream remote (to sync with main repo later)
-git remote add upstream https://github.com/kartikpawar/tellr.git
+git remote add upstream https://github.com/kartikpawar/speakr.git
 
 # 4. Create and activate virtual environment
 python -m venv .venv
@@ -92,10 +92,10 @@ cp .env.example .env            # macOS / Linux
 ### Verify It Works
 
 ```bash
-python tellr_app.py
+python speakr_app.py
 ```
 
-The Tellr GUI should appear. If it doesn't, check the error output and ensure all dependencies are installed.
+The Speakr GUI should appear. If it doesn't, check the error output and ensure all dependencies are installed.
 
 ### Syncing Your Fork
 
@@ -112,8 +112,8 @@ git push origin main
 ## 📁 Project Structure
 
 ```
-tellr/
-├── tellr_app.py          # Main application — UI, system tray, hotkey, orchestration
+speakr/
+├── speakr_app.py          # Main application — UI, system tray, hotkey, orchestration
 ├── recorder.py           # Audio capture — 16kHz mono PCM via sounddevice
 ├── transcriber.py        # Groq cloud transcription — HTTP multipart API client
 ├── settings.py           # Settings persistence — JSON config management
@@ -130,7 +130,7 @@ tellr/
 ├── HANDOVER.md           # Developer architecture documentation
 ├── LICENSE               # MIT License
 │
-├── tellr/                # Python package
+├── speakr/               # Python package
 │   └── __init__.py
 │
 ├── src/                  # Tauri v2 frontend (alternative backend)
@@ -167,7 +167,7 @@ def process(audio: Optional[bytes]) -> Optional[str]:
 | Element | Convention | Example |
 |---------|-----------|---------|
 | Variables & functions | `snake_case` | `_set_clipboard_text()` |
-| Classes | `PascalCase` | `TellrApp` |
+| Classes | `PascalCase` | `SpeakrApp` |
 | Constants | `UPPER_SNAKE` | `SAMPLE_RATE = 16000` |
 | Private members | `_leading_underscore` | `self._recording` |
 | Module-level private | `__double_underscore` | `__m_seq` (XOR-protected data) |
@@ -178,7 +178,7 @@ Use the project's structured logging instead of `print()`:
 
 ```python
 import logging
-logger = logging.getLogger("tellr.module_name")
+logger = logging.getLogger("speakr.module_name")
 
 logger.info("Operation completed")      # Normal operations
 logger.warning("Degraded state...")      # Non-critical issues
@@ -205,7 +205,7 @@ except:
 
 ### Thread Safety
 
-Tellr uses background threads for recording and transcription. When updating the GUI from a thread:
+Speakr uses background threads for recording and transcription. When updating the GUI from a thread:
 
 ```python
 # ✅ Correct — schedule on main thread
@@ -229,7 +229,7 @@ git checkout -b feature/my-feature
 # 2. Make your changes
 
 # 3. Test your changes
-python tellr_app.py
+python speakr_app.py
 
 # 4. Stage and commit
 git add .
@@ -239,7 +239,7 @@ git commit -m "feat: add support for Turkish language"
 git push origin feature/my-feature
 
 # 6. Open a Pull Request
-#    Go to https://github.com/kartikpawar/tellr and click "Compare & Pull Request"
+#    Go to https://github.com/kartikpawar/speakr and click "Compare & Pull Request"
 ```
 
 ### PR Checklist
@@ -326,7 +326,7 @@ to avoid tkinter thread-safety violation on macOS.
 
 1. **Search existing issues** — Your bug may already be reported or fixed
 2. **Try the latest version** — The issue may have been resolved
-3. **Check the console** — Run `python tellr_app.py` from terminal and look for error logs
+3. **Check the console** — Run `python speakr_app.py` from terminal and look for error logs
 
 ### Bug Report Template
 
@@ -338,7 +338,7 @@ A clear and concise description of what happened.
 
 **To Reproduce**
 Steps to reproduce the behavior:
-1. Open Tellr
+1. Open Speakr
 2. Click on '...'
 3. Press '....'
 4. See error
@@ -352,7 +352,7 @@ If applicable, paste error output from the terminal.
 **Environment (please complete):**
 - OS: [e.g., Windows 11, macOS 14, Ubuntu 24.04]
 - Python version: [e.g., 3.12.3]
-- Tellr version: [e.g., 1.0.0]
+- Speakr version: [e.g., 1.0.0]
 - Microphone: [e.g., built-in, USB headset]
 
 **Additional context**
@@ -414,8 +414,8 @@ A PR is merged when:
 | Resource | Where |
 |----------|-------|
 | **Documentation** | [`README.md`](README.md) |
-| **Bug Reports** | [GitHub Issues](https://github.com/kartikpawar/tellr/issues) |
-| **Feature Ideas** | [GitHub Discussions](https://github.com/kartikpawar/tellr/discussions) |
+| **Bug Reports** | [GitHub Issues](https://github.com/kartikpawar/speakr/issues) |
+| **Feature Ideas** | [GitHub Discussions](https://github.com/kartikpawar/speakr/discussions) |
 | **Quick Questions** | Open a discussion with the `Q&A` label |
 
 If you're stuck on a contribution, open a **draft pull request** with what you have so far and ask for guidance. We're happy to help.
@@ -424,7 +424,7 @@ If you're stuck on a contribution, open a **draft pull request** with what you h
 
 ## 🙏 Thank You
 
-Every contribution — whether it's a typo fix, a new feature, or just a bug report — makes Tellr better for everyone. The time and effort you put into contributing is genuinely appreciated.
+Every contribution — whether it's a typo fix, a new feature, or just a bug report — makes Speakr better for everyone. The time and effort you put into contributing is genuinely appreciated.
 
 **Happy coding. Speak freely.**
 

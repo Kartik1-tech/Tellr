@@ -48,7 +48,7 @@ async fn stop_and_transcribe(app: AppHandle, state: State<'_, AppState>) -> Resu
     let text = if settings.engine == "groq" {
         transcribe::transcribe_groq(wav_bytes, &settings.groq_api_key, &settings.language).await?
     } else {
-        let proj_dirs = directories::ProjectDirs::from("com", "tellr", "app").unwrap();
+        let proj_dirs = directories::ProjectDirs::from("com", "speakr", "app").unwrap();
         let model_path = proj_dirs.config_dir().join(format!("ggml-{}.bin", settings.local_model));
         transcribe::transcribe_local(wav_bytes, model_path.to_str().ok_or("Invalid model path")?)?
     };
@@ -92,7 +92,7 @@ async fn download_local_model(state: State<'_, AppState>) -> Result<(), String> 
     };
     let url = format!("https://huggingface.co/ggerganov/whisper.cpp/resolve/main/ggml-{}.bin", model);
     
-    let proj_dirs = directories::ProjectDirs::from("com", "tellr", "app").unwrap();
+    let proj_dirs = directories::ProjectDirs::from("com", "speakr", "app").unwrap();
     let path = proj_dirs.config_dir().join(format!("ggml-{}.bin", model));
     
     transcribe::download_model(&url, path.to_str().unwrap()).await
@@ -182,7 +182,7 @@ fn main() {
             let app_handle = app.handle().clone();
             TrayIconBuilder::new()
                 .icon(icon)
-                .tooltip("Tellr")
+                .tooltip("Speakr")
                 .on_tray_icon_event(move |_tray, event| {
                     if let TrayIconEvent::Click { button: MouseButton::Left, button_state: MouseButtonState::Up, .. } = event {
                         if let Some(window) = app_handle.get_webview_window("main") {

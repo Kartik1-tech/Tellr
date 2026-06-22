@@ -6,7 +6,7 @@ import threading
 import numpy as np
 import sounddevice as sd
 
-logger = logging.getLogger("tellr.recorder")
+logger = logging.getLogger("speakr.recorder")
 
 SAMPLE_RATE = 16000
 CHANNELS = 1

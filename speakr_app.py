@@ -1,5 +1,5 @@
 """
-Tellr - Lightweight desktop dictation app.
+Speakr - Lightweight desktop dictation app.
 CustomTkinter UI + system tray + global hotkey + Groq transcription + auto-paste.
 """
 
@@ -10,7 +10,7 @@ import sys
 import threading
 import tkinter as tk
 
-logger = logging.getLogger("tellr")
+logger = logging.getLogger("speakr")
 
 import customtkinter as ctk
 import pystray
@@ -23,7 +23,7 @@ from transcriber import Transcriber
 
 # ── Constants ──────────────────────────────────────────────────────────
 
-APP_NAME = "Tellr"
+APP_NAME = "Speakr"
 APP_VERSION = "1.0.0"
 DEFAULT_WIN_SIZE = "440x580"
 POLL_INTERVAL_MS = 100
@@ -136,7 +136,7 @@ class Toast:
 
 # ── Main Application ──────────────────────────────────────────────────
 
-class TellrApp:
+class SpeakrApp:
     """Main application controller."""
 
     def __init__(self) -> None:
@@ -495,7 +495,7 @@ class TellrApp:
     def _build_tray(self) -> None:
         img = _create_tray_image()
         menu = pystray.Menu(
-            pystray.MenuItem("Show Tellr", self._show_window, default=True),
+            pystray.MenuItem("Show Speakr", self._show_window, default=True),
             pystray.MenuItem("Quit", self._quit_from_tray),
         )
         self.tray = pystray.Icon(APP_NAME.lower(), img, APP_NAME, menu)
@@ -706,10 +706,10 @@ class TellrApp:
 def main() -> None:
     logging.basicConfig(
         level=logging.INFO,
-        format="[Tellr] %(levelname)s: %(message)s",
+        format="[Speakr] %(levelname)s: %(message)s",
         force=True,
     )
-    app = TellrApp()
+    app = SpeakrApp()
     app.run()
 
 

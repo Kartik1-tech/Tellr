@@ -1,14 +1,14 @@
 <!--
   SOCIAL PREVIEW
   ────────────────────────────────────────────────────
-  Title:       Tellr — Voice dictation for your desktop
+  Title:       Speakr — Voice dictation for your desktop
   Description: Press one hotkey, speak naturally, and your words appear at the cursor in any app.
                Open source desktop dictation. Zero compilation. One-click setup. Groq Whisper.
   ────────────────────────────────────────────────────
 -->
 
 <h1 align="center">
-  🎙️ Tellr <sup><sub>v1.0.0</sub></sup>
+  🎙️ Speakr <sup><sub>v1.0.0</sub></sup>
 </h1>
 
 <p align="center">
@@ -19,7 +19,7 @@
 
 <p align="center">
   <a href="https://www.python.org/downloads/"><img src="https://img.shields.io/badge/python-3.10%2B-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python 3.10+"></a>
-  <a href="https://github.com/kartikpawar/tellr/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-success?style=flat-square" alt="MIT License"></a>
+  <a href="https://github.com/kartikpawar/speakr/blob/main/LICENSE"><img src="https://img.shields.io/badge/license-MIT-success?style=flat-square" alt="MIT License"></a>
   <a href="https://console.groq.com/keys"><img src="https://img.shields.io/badge/powered%20by-Groq%20Whisper-FF6F00?style=flat-square" alt="Powered by Groq"></a>
   <br>
   <img src="https://img.shields.io/badge/platform-windows%20%7C%20macOS%20%7C%20linux-lightgrey?style=flat-square" alt="Cross-platform">
@@ -33,7 +33,7 @@
 
 - [Emoji Legend](#emoji-legend)
 - [Overview](#overview)
-- [Why Tellr?](#why-tellr)
+- [Why Speakr?](#why-speakr)
 - [Features](#features)
 - [End-to-End Workflow](#end-to-end-workflow)
 - [Quick Start](#quick-start)
@@ -52,11 +52,11 @@
 
 ## Emoji Legend
 
-The following emojis are used throughout this document. Each is defined below in the specific context of voice dictation and the Tellr application.
+The following emojis are used throughout this document. Each is defined below in the specific context of voice dictation and the Speakr application.
 
-| Icon | Designation | Context in Tellr |
+| Icon | Designation | Context in Speakr |
 |------|-------------|------------------|
-| 🎙️ | Application Icon | Tellr application identity |
+| 🎙️ | Application Icon | Speakr application identity |
 | 🎤 | Recording State | Active microphone — audio capture in progress |
 | ⏹️ | Stop Command | Terminates active recording session |
 | ⏳ | Processing State | Audio awaiting transcription response from Groq API |
@@ -89,21 +89,21 @@ The following emojis are used throughout this document. Each is defined below in
 
 ## Overview
 
-Tellr is a production-grade desktop dictation engine that converts speech to text anywhere in your operating system. It operates as a lightweight background process activated by a global hotkey, eliminating the need to switch windows or interact with a separate interface during dictation.
+Speakr is a production-grade desktop dictation engine that converts speech to text anywhere in your operating system. It operates as a lightweight background process activated by a global hotkey, eliminating the need to switch windows or interact with a separate interface during dictation.
 
 The application captures audio at 16 kHz mono 16-bit PCM — the optimal input format for Whisper-family speech recognition models — and transmits it to Groq's `whisper-large-v3` API for sub-second transcription. The resulting text is automatically copied to the system clipboard and pasted at the user's cursor position via keyboard simulation, completing the full dictation cycle without any manual intervention.
 
 **Target Audience:** Developers, technical writers, accessibility users, and any professional who spends significant time typing and seeks a hands-free input alternative.
 
-**Key Differentiator:** Tellr requires zero compilation, no SDK installations, and no build toolchain. It is distributed as pure Python source code with a single dependency resolution step and a one-click launcher for Windows. This makes it the most accessible self-hosted dictation solution available for open source deployment.
+**Key Differentiator:** Speakr requires zero compilation, no SDK installations, and no build toolchain. It is distributed as pure Python source code with a single dependency resolution step and a one-click launcher for Windows. This makes it the most accessible self-hosted dictation solution available for open source deployment.
 
 ---
 
-## Why Tellr?
+## Why Speakr?
 
-The table below compares Tellr against common alternatives across criteria relevant to professional users.
+The table below compares Speakr against common alternatives across criteria relevant to professional users.
 
-| Criteria | Tellr | Built-in OS Dictation | Commercial Tools (Dragon, etc.) | Web-Based Dictation |
+| Criteria | Speakr | Built-in OS Dictation | Commercial Tools (Dragon, etc.) | Web-Based Dictation |
 |----------|-------|----------------------|--------------------------------|---------------------|
 | **Offline Capable** | Partial (local Whisper planned) | ✅ OS-dependent | ✅ | ❌ Requires internet |
 | **Global Hotkey** | ✅ Any application | ❌ Limited to specific apps | ✅ | ❌ Browser only |
@@ -141,7 +141,7 @@ The table below compares Tellr against common alternatives across criteria relev
 
 - **Zero Compilation Architecture:** Pure Python codebase — no native compilation, no build toolchain, no SDK dependencies.
 - **Single-Command Setup:** `run.bat` on Windows handles virtual environment creation, dependency resolution, and application launch in one step.
-- **Structured Logging:** All runtime diagnostic output uses Python's `logging` module with hierarchical logger names (`tellr`, `tellr.recorder`, `tellr.settings`), configured at application entry point.
+- **Structured Logging:** All runtime diagnostic output uses Python's `logging` module with hierarchical logger names (`speakr`, `speakr.recorder`, `speakr.settings`), configured at application entry point.
 - **Automatic Retry with Backoff:** The transcription client implements a 3-attempt retry loop with 1-second backoff on timeout errors.
 - **Graceful Degradation:** Microphone initialization falls back to the system default device if the configured device fails. Hotkey registration falls back to <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>M</kbd> if the user-configured combination fails.
 - **Thread-Safe Architecture:** Audio capture runs on a dedicated thread; transcription runs on a separate thread. All tkinter GUI updates are marshaled to the main thread via `root.after()` to prevent cross-thread UI corruption.
@@ -152,11 +152,11 @@ The table below compares Tellr against common alternatives across criteria relev
 
 ```
  ┌─────────────────────────────────────────────────────────────────────────────┐
- │                         TELLR RECORDING CYCLE                               │
+ │                         SPEAKR RECORDING CYCLE                              │
  ├─────────────────────────────────────────────────────────────────────────────┤
  │                                                                             │
  │  ┌──────────┐      ┌──────────┐      ┌──────────┐      ┌──────────────┐   │
- │  │  USER    │      │  TELLR   │      │  GROQ    │      │  ACTIVE      │   │
+ │  │  USER     │  │  SPEAKR  │      │  GROQ    │      │  ACTIVE      │   │
  │  │  PRESSES │─────▶│ RECORDS  │─────▶│TRANSCRIBES│─────▶│  WINDOW      │   │
  │  │  HOTKEY  │      │ 16kHz WAV│      │whisper-v3│      │  AUTO-PASTES │   │
  │  └──────────┘      └──────────┘      └──────────┘      └──────────────┘   │
@@ -197,8 +197,8 @@ The table below compares Tellr against common alternatives across criteria relev
 ### Method 1: Windows — One-Click Setup
 
 ```batch
-git clone https://github.com/kartikpawar/tellr.git
-cd tellr
+git clone https://github.com/kartikpawar/speakr.git
+cd speakr
 .\run.bat
 ```
 
@@ -207,7 +207,7 @@ The launcher performs the following operations automatically:
 1. Scans for Python 3.10+ installations (known paths, `py` launcher, `PATH`)
 2. Creates an isolated virtual environment at `.venv\`
 3. Installs all dependencies via `pip install -r requirements.txt`
-4. Launches the application with `python tellr_app.py`
+4. Launches the application with `python speakr_app.py`
 
 > **Note:** The console window displays diagnostic output. Closing it terminates the application. Minimize to tray via the GUI close button for background operation.
 
@@ -215,8 +215,8 @@ The launcher performs the following operations automatically:
 
 ```bash
 # Clone repository
-git clone https://github.com/kartikpawar/tellr.git
-cd tellr
+git clone https://github.com/kartikpawar/speakr.git
+cd speakr
 
 # Create virtual environment
 python3 -m venv .venv
@@ -231,13 +231,13 @@ source .venv/bin/activate
 pip install -r requirements.txt
 
 # Launch application
-python tellr_app.py
+python speakr_app.py
 ```
 
 ### Initial Configuration
 
 1. **Obtain API credentials:** Register at [console.groq.com](https://console.groq.com/keys) and create an API key
-2. **Launch Tellr:** Execute the application using one of the methods above
+2. **Launch Speakr:** Execute the application using one of the methods above
 3. **Enter API key:** Paste your Groq API key into the **Groq API Key** field (masked input)
 4. **Select input device:** Choose your microphone from the device dropdown
 5. **Configure language:** (Optional) Select a language for improved recognition accuracy
@@ -264,7 +264,7 @@ python tellr_app.py
 |-----------|----------|
 | Close button | Minimizes to system tray. Process continues running in background. |
 | Left-click tray icon | Toggles window visibility (show ↔ hide) |
-| Right-click → "Show Tellr" | Restores window to foreground |
+| Right-click → "Show Speakr" | Restores window to foreground |
 | Right-click → "Quit" | Stops tray icon, destroys window, terminates process |
 
 ### Hotkey Customization
@@ -338,9 +338,9 @@ User preferences are persisted to `settings.json` in the project root. This file
 ### Module Map
 
 ```
-tellr/
+speakr/
 │
-├── tellr_app.py             # Application entry point and main controller
+├── speakr_app.py            # Application entry point and main controller
 │                                • UI construction and event loop (CustomTkinter)
 │                                • System tray integration (pystray)
 │                                • Global hotkey binding (pynput)
@@ -380,7 +380,7 @@ tellr/
 ├── CONTRIBUTING.md          # Contribution guidelines
 ├── LICENSE                  # MIT license terms
 │
-├── tellr/                   # Python package module
+├── speakr/                  # Python package module
 │   └── __init__.py
 │
 ├── src/                     # Tauri v2 web-based frontend (alternative presentation layer)
@@ -401,7 +401,7 @@ tellr/
  ┌──────────────────────────────────────────────────────────────────────┐
  │                         APPLICATION LAYER                            │
  │  ┌────────────────────────────────────────────────────────────────┐  │
- │  │                        tellr_app.py                            │  │
+ │  │                        speakr_app.py                           │  │
  │  │                                                                  │  │
  │  │  ┌──────────┐   ┌──────────┐   ┌──────────┐   ┌────────────┐  │  │
  │  │  │  Hotkey  │──▶│  Queue   │──▶│Recording │──▶│Transcription│  │  │

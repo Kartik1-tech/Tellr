@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "Tellr",
+  "productName": "Speakr",
   "version": "0.1.0",
-  "identifier": "com.tellr.app",
+  "identifier": "com.speakr.app",
   "build": {
     "frontendDist": "../src"
   },
@@ -11,7 +11,7 @@
     "windows": [
       {
         "label": "main",
-        "title": "Tellr",
+        "title": "Speakr",
         "width": 400,
         "height": 500,
         "resizable": false,

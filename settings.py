@@ -3,7 +3,7 @@ import logging
 import os
 from dataclasses import dataclass, asdict
 
-logger = logging.getLogger("tellr.settings")
+logger = logging.getLogger("speakr.settings")
 
 
 SETTINGS_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "settings.json")

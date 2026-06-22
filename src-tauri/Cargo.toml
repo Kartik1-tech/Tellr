@@ -1,12 +1,12 @@
 [package]
-name = "tellr"
+name = "speakr"
 version = "0.1.0"
-description = "Tellr - Personal dictation app"
+description = "Speakr - Personal dictation app"
 authors = ["Kartik Pawar"]
 edition = "2021"
 
 [lib]
-name = "tellr_lib"
+name = "speakr_lib"
 crate-type = ["staticlib", "cdylib", "rlib"]
 
 [build-dependencies]

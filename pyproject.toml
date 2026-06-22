@@ -1,5 +1,5 @@
 [project]
-name = "tellr"
+name = "speakr"
 version = "1.0.0"
 description = "Ultra-fast global voice dictation — press a hotkey, speak, text appears at your cursor."
 readme = "README.md"
@@ -38,19 +38,19 @@ dependencies = [
 ]
 
 [project.scripts]
-tellr = "tellr_app:main"
+speakr = "speakr_app:main"
 
 [project.urls]
-Homepage = "https://github.com/kartikpawar/tellr"
-Repository = "https://github.com/kartikpawar/tellr"
-BugTracker = "https://github.com/kartikpawar/tellr/issues"
+Homepage = "https://github.com/kartikpawar/speakr"
+Repository = "https://github.com/kartikpawar/speakr"
+BugTracker = "https://github.com/kartikpawar/speakr/issues"
 
 [build-system]
 requires = ["setuptools>=64.0"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
-include = ["tellr*"]
+include = ["speakr*"]
 
 [tool.setuptools.package-data]
-tellr = ["py.typed"]
+speakr = ["py.typed"]
